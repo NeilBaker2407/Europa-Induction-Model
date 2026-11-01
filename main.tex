@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} % Required for some math notation
+\usepackage{array} % allows for table notation
+\usepackage{multirow} % allows for table notation
+\usepackage[margin=1in]{geometry}
+
+\title{Europa Induction Model}
+\author{Neil Baker}
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Now, we will solve the problem of induction with finite ocean and ice conductivities. The background, time-changing Jovian magnetic field is:
+\begin{align}
+    \underline{B}_0(t) = \underline{B}_0e^{i\omega t}
+\end{align}
+At any given time, the magnetic field is uniform in space. Begin with the full set of Maxwell's equations, minus the displacement current, plus Ohm's law.
+\begin{align}
+    \nabla\cdot\underline{E} &= \frac{\rho_c}{\epsilon_0} \\
+    \nabla\cdot\underline{B} &= 0 \label{Gauss} \\
+    \nabla\times\underline{E} &= -\frac{\partial\underline{B}}{\partial t} \label{DivB} \\
+    \nabla\times\underline{B} &= \mu_0\underline{j} \label{Faraday} \\
+    \underline{j} &= \sigma\underline{E} \label{Ampere}
+\end{align}
+We can eliminate the current term in Equation (\ref{Ampere}) to get an intuition about the types of charge densities that will accumulate in response to the time varying field. 
+\begin{align}
+    \nabla\times\underline{B} &= \mu_0(\sigma\underline{E}) \\
+    \nabla\cdot(\nabla\times\underline{B}) &= \mu_0\sigma\nabla\cdot\underline{E} \\
+    &= \frac{\mu_0\sigma\rho_c}{\epsilon_0} \\
+    &= 0
+\end{align}
+Identically, the divergence of a curl is zero. This means that $\rho_c=0$; i.e., that we need only worry about surface charge densities, not volume charge densities.
+
+\end{document}
