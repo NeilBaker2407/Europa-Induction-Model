@@ -7,30 +7,51 @@
 
 \title{Europa Induction Model}
 \author{Neil Baker}
-\date{November 2026}
+% \date{November 2026}
 
 \begin{document}
-
 \maketitle
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+Europa's material layers (out to in) consist of an icy crust, salty ocean, rocky mantle and iron core. We will assume that all these layers are spherically symmetric. We will solve the induction problem by first considering only the inductive response from the icy crust and ocean. The origin of our coordinate system is the center of Europa. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. Europa's radius is denoted $R_E$. The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The full conductivity profile is then:
+\begin{align}
+    \sigma(r) &= \sigma_{ocean}[\Theta(r-R_1)-\Theta(r-R_2)] + \sigma_{ice}[\Theta(r-R_2)-\Theta(r-R_E)]
+\end{align}
+Where $\Theta$ is the Heaviside function. The ambient inducing Jovian magnetic field is:
+\begin{align}
+    \mathbf{B}_J(t) = \mathbf{B}_0e^{-i\omega t}
+\end{align}
+At any given time, $\mathbf{B}_J$ is uniform in space.
 
-\section{Setup}
-The background, time-changing Jovian magnetic field is:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Strategy}
+At any given time, the magnetic field is uniform in space. We may split this field up into its three cartesian components that oscillate at the same synodic frequency. The solution that results from only considering the induction response from \textit{one} of these three components will be readily transferable to the other two. In particular, we will first consider the influence of only the $z$-component of the background field.
 \begin{align}
-    \underline{B}_0(t) = \underline{B}_0e^{i\omega t}
+    \mathbf{B}_{J,z} = B_{0,z}e^{-i\omega t}\mathbf{\hat{z}}
 \end{align}
-At any given time, the magnetic field is uniform in space. Begin with the full set of Maxwell's equations, minus the displacement current, plus Ohm's law.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fundamental Equations}
+We will need the full set of Maxwell's equations, minus the displacement current, plus Ohm's law.
 \begin{align}
-    \nabla\cdot\underline{E} &= \frac{\rho_c}{\epsilon_0} \\
-    \nabla\cdot\underline{B} &= 0 \label{Gauss} \\
-    \nabla\times\underline{E} &= -\frac{\partial\underline{B}}{\partial t} \label{DivB} \\
-    \nabla\times\underline{B} &= \mu_0\underline{j} \label{Faraday} \\
-    \underline{j} &= \sigma\underline{E} \label{Ampere}
+    \nabla\cdot\mathbf{E} &= \frac{\rho_c}{\epsilon_0} \label{Gauss} \\
+    \nabla\cdot\mathbf{B} &= 0 \label{DivB} \\
+    \nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t} \label{Farday} \\
+    \nabla\times\mathbf{B} &= \mu_0\mathbf{j} \label{Ampere} \\
+    \mathbf{j} &= \sigma\mathbf{E} \label{Ohm}
 \end{align}
-We do not work with the $\underline{D}$ and $\underline{H}$ fields because ???. 
-\begin{align}
-    
-\end{align}
+We do not work with the $\mathbf{D}$ and $\mathbf{H}$ fields because ???. We do not consider the displacement current because $\epsilon_0\mu_0\partial_t\mathbf{E}$ is small.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Boundary Conditions}
 
 \end{document}
