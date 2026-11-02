@@ -16,23 +16,23 @@
 %%%%%%%%%% SECTION %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Europa's material layers (out to in) consist of an icy crust, salty ocean, rocky mantle and iron core. We will assume that all these layers are spherically symmetric. We will solve the induction problem by first considering only the inductive response from the icy crust and ocean. The origin of our coordinate system is the center of Europa. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. Europa's radius is denoted $R_E$. The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The full conductivity profile is then:
-\begin{align}
-    \sigma(r) &= \sigma_{ocean}[\Theta(r-R_1)-\Theta(r-R_2)] + \sigma_{ice}[\Theta(r-R_2)-\Theta(r-R_E)]
-\end{align}
-Where $\Theta$ is the Heaviside function. The ambient inducing Jovian magnetic field is:
-\begin{align}
-    \mathbf{B}_J(t) = \mathbf{B}_0e^{-i\omega t}
-\end{align}
-At any given time, $\mathbf{B}_J$ is uniform in space.
+Europa's material layers (out to in) consist of an icy crust, salty ocean, rocky mantle and iron core. ???
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Strategy}
-At any given time, the magnetic field is uniform in space. We may split this field up into its three cartesian components that oscillate at the same synodic frequency. The solution that results from only considering the induction response from \textit{one} of these three components will be readily transferable to the other two. In particular, we will first consider the influence of only the $z$-component of the background field.
+\section{Model}
+We use a spherical coordinate system $(r,\theta,\phi)$ with the origin at the center of the moon. We will assume that all of Europa's material layers are spherically symmetric. Europa's radius is denoted $R_E$. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. We will \textit{only} consider the inductive response from these two layers; that is, we treat everything in the region $r<R_1$ as magnetically inert. The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The conductivity profile is:
 \begin{align}
-    \mathbf{B}_{J,z} = B_{0,z}e^{-i\omega t}\mathbf{\hat{z}}
+    \sigma(r) &= \sigma_{ocean}[\Theta(r-R_1)-\Theta(r-R_2)] + \sigma_{ice}[\Theta(r-R_2)-\Theta(r-R_E)]
+\end{align}
+Where $\Theta$ is the Heaviside function. The ambient inducing Jovian magnetic field is the sum of a static field and an oscillating one, with variations in all three cartesian directions. We will omit the static part for now, and simply define the time-variable component, which is the inducing field.
+\begin{align}
+    \mathbf{B}_J(t) = \mathbf{B}_{0}e^{-i\omega t}
+\end{align}
+At any instant, $\mathbf{B}_J$ is uniform in space. We may split the inducing field up into its three cartesian components, which oscillate at the same synodic frequency, though they may be out of phase. Since Maxwell's equations are linear, the total induction response is equivalent to the sum of three individual signals in the $\mathbf{\hat{x}}$, $\mathbf{\hat{y}}$ and $\mathbf{\hat{z}}$ directions. By solving the problem with an inducing field along a single direction, the solutions in the other two will follow by rotation. We choose the $\hat{z}$ direction to serve as the representative direction, where $z=r\cos(\theta)$. This has the advantage of granting the solution azimuthal symmetry.
+\begin{align}
+    \mathbf{B}_{J,z}(t) = B_{0,z}e^{-i\omega t}\mathbf{\hat{z}}
 \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,11 +43,11 @@ We will need the full set of Maxwell's equations, minus the displacement current
 \begin{align}
     \nabla\cdot\mathbf{E} &= \frac{\rho_c}{\epsilon_0} \label{Gauss} \\
     \nabla\cdot\mathbf{B} &= 0 \label{DivB} \\
-    \nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t} \label{Farday} \\
+    \nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t} \label{Faraday} \\
     \nabla\times\mathbf{B} &= \mu_0\mathbf{j} \label{Ampere} \\
     \mathbf{j} &= \sigma\mathbf{E} \label{Ohm}
 \end{align}
-We do not work with the $\mathbf{D}$ and $\mathbf{H}$ fields because ???. We do not consider the displacement current because $\epsilon_0\mu_0\partial_t\mathbf{E}$ is small.
+We do not work with the $\mathbf{D}$ and $\mathbf{H}$ fields because ???. We do not consider the displacement current because the rate of change of the electric field, quantified by $\partial_t\mathbf{E}$, will be similar to Jupiter's synodic frequency. Therefore, $\epsilon_0\mu_0\partial_t\mathbf{E}$ is small.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
