@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath} % Required for some math notation
+\usepackage{array} % allows for table notation
+\usepackage{multirow} % allows for table notation
+\usepackage[margin=1in]{geometry}
+
+% ---------- handy macros ----------
+% insert shortcuts here
+
+\title{Europa Induction Model: Computational Verification}
+\author{Neil Baker}
+% \date{November 2026}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+In this section, we will aim to make a model of the Europa induction problem to compare to the theory.
+
+\section{Model}
+The equations we will need are Maxwell's and Ohm's law.
+\begin{align}
+    \nabla\cdot\mathbf{E} &= \frac{\rho_c}{\epsilon_0} \\
+    \nabla\cdot B &= 0 \\
+    \nabla\times\mathbf{E} &= -\frac{\partial\mathbf{B}}{\partial t} \\
+    \nabla\times\mathbf{B} &= \mu_0\mathbf{j} \\
+    \mathbf{j} &= \sigma\mathbf{E}
+\end{align}
+The displacement current is neglected because the time scales are slow. Substituting Ohm's law into 
+
+Handling the divergence of $\mathbf{B}$ is difficult when the 
+
+\end{document}
