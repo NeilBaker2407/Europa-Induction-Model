@@ -27,7 +27,7 @@ Europa's material layers (out to in) consist of an icy crust, salty ocean, rocky
 \begin{center}
 \makebox[\textwidth][c]{
 \noindent\includegraphics[width=0.5\textwidth]{Figures/shell_model.pdf}}
-\caption{\scriptsize{\label{fig:shell_model}The shell model of Europa embedded in a spatially-uniform, time-varying magnetic field $\mathbf{B}_J$. The $z$-direction points upwards and $\mathbf{B}_J$ (gray arrows) oscillates in this direction only. Europa's innermost volume (tan) has no conductivity and a radius $R_1$. The ocean (dark blue) extends from $R_1 < r < R_2$ and carries a conductivity $\sigma_{ocean}$. The ice shell (light blue) extends from $R_2 < r < R_E$ and carries a conductivity $\sigma_{ice}$.}}
+\caption{\scriptsize{\label{fig:shell_model}The shell model of Europa. The moon is embedded in a spatially-uniform, time-varying magnetic field $\mathbf{B}_{J,z}$ (gray arrows). The $z$-axis points upwards. Europa's innermost volume (tan) has no conductivity and a radius $R_1$. The ocean (dark blue) extends from $R_1 < r < R_2$ and carries a conductivity $\sigma_{ocean}$. The ice shell (light blue) extends from $R_2 < r < R_E$ and carries a conductivity $\sigma_{ice}$.}}
 \end{center}
 \end{figure}
 We use a spherical coordinate system $(r,\theta,\phi)$ with the origin at the center of the moon. We will assume that all of Europa's material layers are spherically symmetric. Europa's radius is denoted $R_E$. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. We will \textit{only} consider the inductive response from these two layers; that is, we treat everything in the region $r<R_1$ as perfectly electrically insulating ($\sigma=0$). The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The conductivity profile is:
@@ -68,12 +68,13 @@ A correct description of the magnetic field boundary conditions is crucial to de
 \appendix
 \section{Neglecting the Displacement Current} \label{Appendix_Displacement_Current}
 The Jovian field has a period of around 11 hours. We denote the synodic rotation frequency $\omega$. On these time scales, $|\epsilon_0\mu_0\partial_t\mathbf{E}|$ is small  compared to (1) $|\mu_0\mathbf{j}|$ in conducting regions, and (2) $|\nabla\times\mathbf{B}|$ in non-conducting regions. For the former:
+
 \begin{align}
-    \left|\frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\mu_0\mathbf{j}}\right| &\approx \frac{\omega\epsilon_0}{\sigma}
+    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\mu_0\mathbf{j}\right|} &\approx \frac{\omega\epsilon_0}{\sigma}
 \end{align}
 For the latter:
 \begin{align}
-    \left|\frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\nabla\times\mathbf{B}}\right| &\approx \frac{\omegaR_EE}{c^2B}
+    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\nabla\times\mathbf{B}\right|} &\approx \frac{\omega R_EE}{c^2B}
 \end{align}
 ???
 
