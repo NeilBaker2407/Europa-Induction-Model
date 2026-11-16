@@ -55,7 +55,7 @@ We will need the full set of Maxwell's equations, minus the displacement current
     \nabla\times\mathbf{B} &= \mu_0\mathbf{j} \label{Ampere} \\
     \mathbf{j} &= \sigma\mathbf{E} \label{Ohm}
 \end{align}
-We do not consider the displacement current, $\epsilon_0\mu_0\partial_t\mathbf{E}$, since it is small compared to the terms in Equation (\ref{Ampere}) on the time scales set by Jupiter's synodic rotational frequency. See \ref{Appendix_Displacment_Current}.
+We do not consider the displacement current, $\epsilon_0\mu_0\partial_t\mathbf{E}$, since it is small compared to the terms in Equation (\ref{Ampere}) on the time scales set by Jupiter's synodic rotational frequency. See Appendix \ref{Appendix_Displacement_Current}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
@@ -66,14 +66,14 @@ A correct description of the magnetic field boundary conditions is crucial to de
 
 
 \appendix
-\section{Neglecting the Displacement Current}
-The Jovian field has a period of around 11 hours. We denote the synodic rotation frequency $\omega_s$. On these time scales, $\partial_t\mathbf{E}$ is small  compared to (1) $\mu_0\mathbf{j}$ in conducting regions, and (2) $\nabla\times\mathbf{B}$ in non-conducting regions. For the former:
+\section{Neglecting the Displacement Current} \label{Appendix_Displacement_Current}
+The Jovian field has a period of around 11 hours. We denote the synodic rotation frequency $\omega$. On these time scales, $|\epsilon_0\mu_0\partial_t\mathbf{E}|$ is small  compared to (1) $|\mu_0\mathbf{j}|$ in conducting regions, and (2) $|\nabla\times\mathbf{B}|$ in non-conducting regions. For the former:
 \begin{align}
-    \frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\mu_0\mathbf{j}} &\approx \frac{\omega_s\epsilon_0}{\sigma}
+    \left|\frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\mu_0\mathbf{j}}\right| &\approx \frac{\omega\epsilon_0}{\sigma}
 \end{align}
 For the latter:
 \begin{align}
-    \frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\nabla\times\mathbf{B}} &\approx \frac{\omega_sR_EE}{c^2B}
+    \left|\frac{\epsilon_0\mu_0\partial_t\mathbf{E}}{\nabla\times\mathbf{B}}\right| &\approx \frac{\omegaR_EE}{c^2B}
 \end{align}
 ???
 
