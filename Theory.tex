@@ -5,6 +5,7 @@
 \usepackage{multirow} % allows for table notation
 \usepackage[margin=1in]{geometry}
 \usepackage{appendix}
+\usepackage{subcaption}
 
 \title{Europa Induction Model}
 \author{Neil Baker}
@@ -27,10 +28,10 @@ Europa's material layers (out to in) consist of an icy crust, salty ocean, rocky
 \begin{center}
 \makebox[\textwidth][c]{
 \noindent\includegraphics[width=0.5\textwidth]{Figures/shell_model.pdf}}
-\caption{\scriptsize{\label{fig:shell_model}The shell model of Europa. The moon is embedded in a spatially-uniform, time-varying magnetic field $\mathbf{B}_{J,z}$ (gray arrows). The $z$-axis points upwards. Europa's innermost volume (tan) has no conductivity and a radius $R_1$. The ocean (dark blue) extends from $R_1 < r < R_2$ and carries a conductivity $\sigma_{ocean}$. The ice shell (light blue) extends from $R_2 < r < R_E$ and carries a conductivity $\sigma_{ice}$.}}
+\caption{\scriptsize{\label{fig:shell_model}The shell model of Europa. The $z$-axis points upwards. The moon is embedded in a spatially-uniform, time-varying magnetic field $\mathbf{B}_{J,z}$ (gray arrows), shown at an instant in which the field points southwards. Europa's innermost volume (tan) has no conductivity and a radius $R_1$. The ocean (dark blue) extends from $R_1 < r < R_2$ and carries a conductivity $\sigma_{ocean}$. The ice shell (light blue) extends from $R_2 < r < R_E$ and carries a conductivity $\sigma_{ice}$.}}
 \end{center}
 \end{figure}
-We use a spherical coordinate system $(r,\theta,\phi)$ with the origin at the center of the moon. We will assume that all of Europa's material layers are spherically symmetric. Europa's radius is denoted $R_E$. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. We will \textit{only} consider the inductive response from these two layers; that is, we treat everything in the region $r<R_1$ as perfectly electrically insulating ($\sigma=0$). The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The conductivity profile is:
+Figure \ref{fig:shell_model} is a schematic of the model setup. We use a spherical coordinate system $(r,\theta,\phi)$ with the origin at the center of the moon. We will assume that all of Europa's material layers are spherically symmetric. Europa's radius is denoted $R_E$. The interfaces between the mantle and the ocean, and the ocean and the crust occur at $r=R_1$ and $r=R_2$, respectively. We will \textit{only} consider the inductive response from these two layers; that is, we treat everything in the region $r<R_1$ as perfectly electrically insulating ($\sigma=0$). The ocean has conductivity $\sigma_{ocean}$, and the ice $\sigma_{ice}$. The conductivity profile is:
 \begin{align}
     \sigma(r) &= \sigma_{ocean}[\Theta(r-R_1)-\Theta(r-R_2)] + \sigma_{ice}[\Theta(r-R_2)-\Theta(r-R_E)]
 \end{align}
@@ -61,10 +62,62 @@ We do not consider the displacement current, $\epsilon_0\mu_0\partial_t\mathbf{E
 %%%%%%%%%% SECTION %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Boundary Conditions}
-A correct description of the magnetic field boundary conditions is crucial to describe it everywhere in space.  
+The analytical expression for the magnetic field will be piecewise, so we need to establish boundary conditions for the spherical interfaces. The condition for the normal (radial) component involves Equation (\ref{DivB}), while that for the tangential (angular) components involves (\ref{Faraday}). 
 
+%%%%%%%%%%%%%%%%%
+\subsubsection*{Normal Component}
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/wedge.pdf}
+        \caption{}
+        \label{fig:wedge}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/loop.pdf}
+        \caption{}
+        \label{fig:LangmuirCurve}
+    \end{subfigure}
+    \caption{\scriptsize{The spherical cap (a) and Amperean loop (b) used to derive the magnetic field boundary conditions. The $\mathbf{\hat{r}}$-direction lies normal to the spherical surface; the angular directions lie tangential to it. The $\mathbf{\hat{z}}$-direction points upwards. The cap and loop both split the spherical interface that has a radius $R$. Both are compressed such that $dr\longrightarrow0$.}}
+    \label{fig:Bfieldbcs}
+\end{figure}
+Integrate Equation (\ref{DivB}) over the volume contained within a spherical cap (Figure \ref{fig:Bfieldbcs}(a)), for a representative interface that lies at $r=R$.
+\begin{align}
+    \int dV \nabla\cdot\mathbf{B} &= C
+\end{align}
+Where $C$ is a constant. Using the divergence theorem, this is equivalent to:
+\begin{align}
+    \oint\mathbf{dA}\cdot\mathbf{B} &= C
+\end{align}
+Where the integrand is a sum of dot products between the six infinitesimal vectors that comprise $\mathbf{dA}$, and the magnetic field vectors $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. If the thickness of the cap is $2\epsilon$, we let $\epsilon\rightarrow0$ when we compress it.
+\begin{align}
+    \lim_{\epsilon\rightarrow0} \oint \left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R+\epsilon, \theta,\phi)(R+\epsilon)^2\sin\theta d\theta d\phi - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R-\epsilon, \theta,\phi)(R-\epsilon)^2\sin\theta d\theta d\phi\right] &= C
+\end{align}
+We assume that the cap is small enough that $\mathbf{B}$ is approximately constant over its surface. Therefore, the integral is simply the value of $\mathbf{B}$ multiplied by the area of the cap, denoted $A_{cap}$.
+\begin{align}
+    A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= C
+\end{align}
 
+\subsubsection*{Tangential Component}
+Now, we move to the tangential condition, which involves a similar argument. This time, we take the integral of Ampere's law through an area perpendicular to the spherical surface (Figure \ref{fig:wedge}(b)). The orientation of the area is determined by the tangential component of $\mathbf{B}$, so it  (i.e., in the $\boldsymbol{\hat{\phi}}$- or $\boldsymbol{\hat{\theta}}$-direction, or a mix of both) is not important. We will integrate Equation (\ref{Ampere}) over the 
+\begin{align}
+    \int\nabla\times\mathbf{B}dA &= \int\mu_0\mathbf{j}dA \\
+\end{align}
+By Stoke's theorem, this is equivalent to the closed line integral around the edge of the area. Meanwhile, we still write the area integral on the right hand side (RHS). The infinitesimal area is the height times the width.  where $dA = Wdr$, where $W$ is the width of the loop and contains angular factors.
+\begin{align}
+    \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}Rdrd\phi
+\end{align}
+There are four edges to consider, but by compressing it in much the same way as we did for the wedge, we send $dr\rightarrow0$. This means that only the tangential components of the dot product contribute. Meanwhile, on the RHS, the area compresses to a line at the surface of the sphere, effectively introducing a delta function at $r=R$. Restricting $\mathbf{j}$ to the surface of the sphere yields a surface current, $\mathbf{K}$.
+\begin{align}
+    \int \mathbf{\hat{n}}\times \mathbf{B}_{out}(R) - \mathbf{\hat{n}}\times \mathbf{B}_{in}(R) &= \mu_0\int \mathbf{K}(R)
+\end{align}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
 \section{Neglecting the Displacement Current} \label{Appendix_Displacement_Current}
 The Jovian field has a period of around 11 hours. We denote the synodic rotation frequency $\omega$. On these time scales, $|\epsilon_0\mu_0\partial_t\mathbf{E}|$ is small  compared to (1) $|\mu_0\mathbf{j}|$ in conducting regions, and (2) $|\nabla\times\mathbf{B}|$ in non-conducting regions. For the former:
@@ -72,7 +125,7 @@ The Jovian field has a period of around 11 hours. We denote the synodic rotation
 \begin{align}
     \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\mu_0\mathbf{j}\right|} &\approx \frac{\omega\epsilon_0}{\sigma}
 \end{align}
-For the latter:
+For the ocean ???, this expression has a numerical value of about ???. For the ice, it has a value of about ???. For the latter:
 \begin{align}
     \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\nabla\times\mathbf{B}\right|} &\approx \frac{\omega R_EE}{c^2B}
 \end{align}
