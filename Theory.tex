@@ -79,7 +79,7 @@ The analytical expression for the magnetic field will be piecewise, so we need t
         \centering
         \includegraphics[width=\textwidth]{Figures/loop.pdf}
         \caption{}
-        \label{fig:LangmuirCurve}
+        \label{fig:loop}
     \end{subfigure}
     \caption{\scriptsize{The spherical cap (a) and Amperean loop (b) used to derive the magnetic field boundary conditions. The $\mathbf{\hat{r}}$-direction lies normal to the spherical surface; the angular directions lie tangential to it. The $\mathbf{\hat{z}}$-direction points upwards. The cap and loop both split the spherical interface that has a radius $R$. Both are compressed such that $dr\longrightarrow0$.}}
     \label{fig:Bfieldbcs}
@@ -89,28 +89,45 @@ Integrate Equation (\ref{DivB}) over the volume contained within a spherical cap
     0 &= \int dV \nabla\cdot\mathbf{B} \\
     &= \oint\mathbf{dA}\cdot\mathbf{B}
 \end{align}
-The integrand is now a sum of dot products between the six infinitesimal $\mathbf{dA}$ vectors normal to each face of the cap, and the magnetic field vectors outside of and within the sphere, $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. The infinitesimal area for these components becomes $\mathbf{dA} = \pm R^2\sin(\theta)d\theta d\phi$ when the cap is compressed. Similarly, $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ are both evaluated at $r=R$, giving us the relationship between them at the interface.
+The integrand is now a sum of dot products between the six infinitesimal $\mathbf{dA}$ vectors normal to each face of the cap, and the magnetic field vectors outside of and within the sphere, $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. The infinitesimal area for these components becomes $\mathbf{dA} = \pm R^2\sin(\theta)d\theta d\phi\mathbf{\hat{r}}$ when the cap is compressed. Similarly, $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ are both evaluated at $r=R$, giving us the relationship between them at the interface.
 \begin{align}
-    \Longrightarrow \int R^2d\Omega\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
+    \Longrightarrow \int_{\Delta\Omega} R^2d\Omega\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the volume has been compressed into a one-dimensional surface, the closed surface integral is replaced by the integral over a solid angle, $d\Omega$. We assume that the cap is small enough that $\mathbf{B}$ is approximately constant over its surface. Therefore, the integral is simply the value of $\mathbf{B}$ multiplied by the area of the cap, denoted $A_{cap}$. This area .
+Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the volume has been compressed into a two-dimensional surface, the closed surface integral is replaced by the integral over an infinitesimal solid angle, $\Delta\Omega$. The tangential components of $B_{\theta}$ and $B_\phi)$ are constant over the surface of the infinitesimal cap, So the integral $\int_{\Delta\Omega} R^2d\Omega$ is trivially the area of the surface, denoted $\Delta A_{cap}$.
 \begin{align}
-    A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
+    \Delta A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
+\end{align}
+The constant term can be divided away, leaving behind the expected boundary condition that the normal component of $\mathbf{B}$ is continuous across the surface.
+\begin{align}
+    \boxed{\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) =  \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)}
 \end{align}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Tangential Component}
-Now, we move to the tangential condition, which involves a similar argument. This time, we take the integral of Ampere's law through an area perpendicular to the spherical surface (Figure \ref{fig:wedge}(b)). The orientation of the area is determined by the tangential component of $\mathbf{B}$, so it  (i.e., in the $\boldsymbol{\hat{\phi}}$- or $\boldsymbol{\hat{\theta}}$-direction, or a mix of both) is not important. We will integrate Equation (\ref{Ampere}) over the 
+Next we will derive the tangential condition, which involves a similar argument. This time, we take the integral of Ampere's law through an area perpendicular to the spherical surface (Figure \ref{fig:Bfieldbcs}(b)).
 \begin{align}
-    \int\nabla\times\mathbf{B}dA &= \int\mu_0\mathbf{j}dA \\
+    \int(\nabla\times\mathbf{B})\cdot\mathbf{dA} &= \int\mu_0\mathbf{j}\cdot\mathbf{dA} \\
 \end{align}
-By Stoke's theorem, this is equivalent to the closed line integral around the edge of the area. Meanwhile, we still write the area integral on the right hand side (RHS). The infinitesimal area is the height times the width.  where $dA = Wdr$, where $W$ is the width of the loop and contains angular factors.
+By Stoke's theorem, the left hand side (LHS) is equivalent to the closed line integral around the edges of the area.
 \begin{align}
-    \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}Rdrd\phi
+    \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}\cdot\mathbf{dA}
 \end{align}
-There are four edges to consider, but by compressing it in much the same way as we did for the wedge, we send $dr\rightarrow0$. This means that only the tangential components of the dot product contribute. Meanwhile, on the RHS, the area compresses to a line at the surface of the sphere, effectively introducing a delta function at $r=R$. Restricting $\mathbf{j}$ to the surface of the sphere yields a surface current, $\mathbf{K}$.
+There are four edges to consider for this line integral, but by compressing it in much the same way as we did for the spherical cap in the last section, we send $dr\rightarrow0$, leaving us with the components parallel to the sphere. On the RHS, the area integral is compressed into a line. We can use the relationship between current density and surface current density ???
+
+% volume current becomes a surface current. We could see this as a delta function that fixes $\mathbf{j}$ to the surface: $\mathbf{j}(r,\theta,\phi)=\mathbf{K}(\theta,\phi)\delta(r-R)$. Since the area of the
+
+We treat all quantities as constant over the line's length so that the integrals disappear
 \begin{align}
-    \int \mathbf{\hat{n}}\times \mathbf{B}_{out}(R) - \mathbf{\hat{n}}\times \mathbf{B}_{in}(R) &= \mu_0\int \mathbf{K}(R)
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{n}}\times\mathbf{\Delta l})\cdot\mathbf{K}
 \end{align}
+Where we have constructed the vector $\mathbf{\hat{n}}\times\mathbf{\Delta l}$ to lie perpendicular to the area of the loop, which is tangential to the spherical surface.
+
+
+% \begin{align}
+%     \int \mathbf{\hat{n}}\times \mathbf{B}_{out}(R) - \mathbf{\hat{n}}\times \mathbf{B}_{in}(R) &= \mu_0\int \mathbf{K}(R)
+% \end{align}
+
+% The orientation of the area is determined by the tangential component of $\mathbf{B}$, so it  (i.e., in the $\boldsymbol{\hat{\phi}}$- or $\boldsymbol{\hat{\theta}}$-direction, or a mix of both) is not important.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
