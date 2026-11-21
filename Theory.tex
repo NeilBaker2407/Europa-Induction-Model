@@ -62,10 +62,10 @@ We do not consider the displacement current, $\epsilon_0\mu_0\partial_t\mathbf{E
 %%%%%%%%%% SECTION %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Boundary Conditions}
-The analytical expression for the magnetic field will be piecewise, so we need to establish boundary conditions for the spherical interfaces. The condition for the normal (radial) component involves Equation (\ref{DivB}), while that for the tangential (angular) components involves (\ref{Faraday}). 
+The analytical expression for the magnetic field will be piecewise, so we need to establish boundary conditions for the spherical interfaces. The condition for the normal (radial) component involves Equation (\ref{DivB}), while that for the tangential (angular) components involves Equation (\ref{Ampere}). 
 
 %%%%%%%%%%%%%%%%%
-\subsubsection*{Normal Component}
+\subsection*{Normal Component}
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
@@ -84,24 +84,21 @@ The analytical expression for the magnetic field will be piecewise, so we need t
     \caption{\scriptsize{The spherical cap (a) and Amperean loop (b) used to derive the magnetic field boundary conditions. The $\mathbf{\hat{r}}$-direction lies normal to the spherical surface; the angular directions lie tangential to it. The $\mathbf{\hat{z}}$-direction points upwards. The cap and loop both split the spherical interface that has a radius $R$. Both are compressed such that $dr\longrightarrow0$.}}
     \label{fig:Bfieldbcs}
 \end{figure}
-Integrate Equation (\ref{DivB}) over the volume contained within a spherical cap (Figure \ref{fig:Bfieldbcs}(a)), for a representative interface that lies at $r=R$.
+Integrate Equation (\ref{DivB}) over the volume contained within a spherical cap (Figure \ref{fig:Bfieldbcs}(a)), for a representative interface that lies at $r=R$. Then, use the divergence theorem.
 \begin{align}
-    \int dV \nabla\cdot\mathbf{B} &= C
+    0 &= \int dV \nabla\cdot\mathbf{B} \\
+    &= \oint\mathbf{dA}\cdot\mathbf{B}
 \end{align}
-Where $C$ is a constant. Using the divergence theorem, this is equivalent to:
+The integrand is now a sum of dot products between the six infinitesimal $\mathbf{dA}$ vectors normal to each face of the cap, and the magnetic field vectors outside of and within the sphere, $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. The infinitesimal area for these components becomes $\mathbf{dA} = \pm R^2\sin(\theta)d\theta d\phi$ when the cap is compressed. Similarly, $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ are both evaluated at $r=R$, giving us the relationship between them at the interface.
 \begin{align}
-    \oint\mathbf{dA}\cdot\mathbf{B} &= C
+    \Longrightarrow \int R^2d\Omega\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-Where the integrand is a sum of dot products between the six infinitesimal vectors that comprise $\mathbf{dA}$, and the magnetic field vectors $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. If the thickness of the cap is $2\epsilon$, we let $\epsilon\rightarrow0$ when we compress it.
+Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the volume has been compressed into a one-dimensional surface, the closed surface integral is replaced by the integral over a solid angle, $d\Omega$. We assume that the cap is small enough that $\mathbf{B}$ is approximately constant over its surface. Therefore, the integral is simply the value of $\mathbf{B}$ multiplied by the area of the cap, denoted $A_{cap}$. This area .
 \begin{align}
-    \lim_{\epsilon\rightarrow0} \oint \left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R+\epsilon, \theta,\phi)(R+\epsilon)^2\sin\theta d\theta d\phi - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R-\epsilon, \theta,\phi)(R-\epsilon)^2\sin\theta d\theta d\phi\right] &= C
-\end{align}
-We assume that the cap is small enough that $\mathbf{B}$ is approximately constant over its surface. Therefore, the integral is simply the value of $\mathbf{B}$ multiplied by the area of the cap, denoted $A_{cap}$.
-\begin{align}
-    A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= C
+    A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
 
-\subsubsection*{Tangential Component}
+\subsection*{Tangential Component}
 Now, we move to the tangential condition, which involves a similar argument. This time, we take the integral of Ampere's law through an area perpendicular to the spherical surface (Figure \ref{fig:wedge}(b)). The orientation of the area is determined by the tangential component of $\mathbf{B}$, so it  (i.e., in the $\boldsymbol{\hat{\phi}}$- or $\boldsymbol{\hat{\theta}}$-direction, or a mix of both) is not important. We will integrate Equation (\ref{Ampere}) over the 
 \begin{align}
     \int\nabla\times\mathbf{B}dA &= \int\mu_0\mathbf{j}dA \\
