@@ -97,10 +97,11 @@ Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. 
 \begin{align}
     \Delta A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-Dividing by $A_{cap}$ leaves behind the expected boundary condition that the normal component of $\mathbf{B}$ is continuous across the surface.
+Dividing by $\Delta A_{cap}$ leaves behind the expected boundary condition that the normal component of $\mathbf{B}$ is continuous across the surface.
 \begin{align}
-    \boxed{\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) =  \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)}
+    \boxed{\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) =  \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)} \label{BCrad}
 \end{align}
+This states that there is no jump/discontinuity in the radial component of the magnetic field.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Tangential Component}
@@ -108,7 +109,7 @@ Next we will derive the tangential condition, which involves a similar argument.
 \begin{align}
     \int(\nabla\times\mathbf{B})\cdot\mathbf{dA} &= \int\mu_0\mathbf{j}\cdot\mathbf{dA} \\
 \end{align}
-By Stoke's theorem, the left hand side (LHS) is equivalent to the closed line integral around the edges of the area.
+By Stokes' theorem, the left hand side (LHS) is equivalent to the closed line integral around the edges of the area.
 \begin{align}
     \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}\cdot\mathbf{dA}
 \end{align}
@@ -117,38 +118,50 @@ There are four edges to consider for this line integral, but by compressing it i
     \mathbf{j} &= \mathbf{j}_{vol} + \mathbf{K}(\theta,\phi)\delta(r-R) \\
     \Longrightarrow \int \mathbf{j}\cdot\mathbf{dA} &= \int\mathbf{j}_{vol}\cdot\mathbf{dA} + \int\delta(r-R)\mathbf{K}\cdot\mathbf{dA}
 \end{align}
-As $dr\rightarrow0$, the first integral on the LHS vanishes, whereas the delta function saves the second. Therefore, the delta function disappears with the radial integral---$\mathbf{K}$ has no $r$-dependence. We are left with:
+As $dr\rightarrow0$, the first integral vanishes, whereas the delta function saves the second. Since $\mathbf{K}$ has no $r$-dependence the radial integral is simply $\int\delta(r-R)dr=1$. We are left with:
 \begin{align}
-    \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \int(\mathbf{\hat{n}}\times\mathbf{dl})\cdot\mathbf{K}
+    \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \int(\mathbf{\hat{r}}\times\mathbf{dl})\cdot\mathbf{K}
 \end{align}
-We have constructed the vector $\mathbf{\hat{n}}\times\mathbf{\Delta l}$ to lie perpendicular to the loop, which is tangential to the spherical surface. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
+We have constructed the vector $\mathbf{\hat{r}}\times\mathbf{dl}$ to lie tangential to the sphere, perpendicular to the loop. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
 \begin{align}
-    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{n}}\times\mathbf{\Delta l})\cdot\mathbf{K}
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{r}}\times\mathbf{\Delta l})\cdot\mathbf{K} \label{BCtemp1}
 \end{align}
-Manipulating the RHS allows us to extract $\mathbf{\Delta l}$.
+Manipulating the vectors on the RHS allows us to extract $\mathbf{\Delta l}$.
 \begin{align}
-    (\mathbf{\hat{n}}\times\mathbf{\Delta l})\cdot\mathbf{K} &= \mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{n}}) \label{cyclic}
+    (\mathbf{\hat{r}}\times\mathbf{\Delta l})\cdot\mathbf{K} &= \mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}}) 
 \end{align}
-Equation (\ref{cyclic}) now reads:
+Equation (\ref{BCtemp1}) now reads:
 \begin{align}
-    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{n}}) \label{BCtemp}
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}}) \label{BCtemp}
 \end{align}
-Let $\mathbf{X} = \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)$ and $\mathbf{Y} = \mathbf{K}\times\mathbf{\hat{n}}$. Then Equation (\ref{BCtemp}) now reads:
+We would like to eliminate the $\mathbf{\Delta l}$ term from both sides. To do this, we must split $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ into radial and tangential components.
+\begin{align}
+    \mathbf{\Delta l}\cdot[\mathbf{\hat{r}}B_{out,r}(R) - \mathbf{\hat{r}}B_{in,r}(R)] + \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}})
+\end{align}
+Since there is no jump in the normal component of the magnetic field, the first term on the LHS is zero using  Equation (\ref{BCrad}). 
+\begin{align}
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}})
+\end{align}
+Let $\mathbf{X} = \mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)$ and $\mathbf{Y} = \mathbf{K}\times\mathbf{\hat{r}}$. Note that both $\mathbf{X}$ and $\mathbf{Y}$ lie on the surface of the sphere. Then Equation (\ref{BCtemp}) now reads:
 \begin{align}
     \mathbf{\Delta l}\cdot\mathbf{X} &= \mathbf{\Delta l}\cdot\mathbf{Y}
 \end{align}
 The loop vector $\mathbf{\Delta l}$ is variable. It can point in the $\boldsymbol{\hat{\theta}}$-direction, such that the $\theta$-components of the vectors are equal, or in the $\boldsymbol{\hat{\phi}}$-direction, so their $\phi$-components are equal. Since this holds for any direction on the surface of the sphere, we see that $\mathbf{X}=\mathbf{Y}$. Therefore, we have:
 \begin{align}
-    \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{n}}
+    \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{r}}
 \end{align}
-Take the cross product with $\mathbf{\hat{n}}$ on the left:
+Take the cross product with $\mathbf{\hat{r}}$ on the left:
 \begin{align}
-    \mathbf{\hat{n}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\hat{n}}\times(\mathbf{K}\times\mathbf{\hat{n}})
+    \mathbf{\hat{r}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\hat{r}}\times(\mathbf{K}\times\mathbf{\hat{r}})
 \end{align}
-But on the RHS, taking another cross product with $\mathbf{\hat{n}}$ simply yields $\mathbf{K}$
- again. Therefore, we have the second boundary condition:
+The RHS can be simplified.
+\begin{align}
+    \mathbf{\hat{r}}\times(\mathbf{K}\times\mathbf{\hat{r}}) &= \mathbf{K}(\mathbf{\hat{r}}\cdot\mathbf{\hat{r}}) - \mathbf{\hat{r}}(\mathbf{K}\cdot\mathbf{\hat{r}}) \\
+    &= \mathbf{K}
+\end{align}
+Therefore, we have the second boundary condition:
  \begin{align}
-     \boxed{\mathbf{\hat{n}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mu_0\mathbf{K}}
+     \boxed{\mathbf{\hat{r}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mu_0\mathbf{K}}
  \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
