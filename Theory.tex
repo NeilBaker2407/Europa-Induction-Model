@@ -93,11 +93,11 @@ The integrand is now a sum of dot products between the six infinitesimal $\mathb
 \begin{align}
     \Longrightarrow \int_{\Delta\Omega} R^2d\Omega\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the volume has been compressed into a two-dimensional surface, the closed surface integral is replaced by the integral over an infinitesimal solid angle, $\Delta\Omega$. The tangential components of $B_{\theta}$ and $B_\phi)$ are constant over the surface of the infinitesimal cap, So the integral $\int_{\Delta\Omega} R^2d\Omega$ is trivially the area of the surface, denoted $\Delta A_{cap}$.
+Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the three-dimensional volume has been compressed into a two-dimensional surface, the closed surface integral is replaced by the integral over an infinitesimal solid angle, $\Delta\Omega$. The normal component of $\mathbf{B}$ varies over the sphere, but over the surface of the infinitesimal cap it is constant. Therefore, the integral $\int_{\Delta\Omega} R^2d\Omega$ is trivially the area of the surface, denoted $\Delta A_{cap}$.
 \begin{align}
     \Delta A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-The constant term can be divided away, leaving behind the expected boundary condition that the normal component of $\mathbf{B}$ is continuous across the surface.
+Dividing by $A_{cap}$ leaves behind the expected boundary condition that the normal component of $\mathbf{B}$ is continuous across the surface.
 \begin{align}
     \boxed{\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) =  \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)}
 \end{align}
@@ -112,22 +112,44 @@ By Stoke's theorem, the left hand side (LHS) is equivalent to the closed line in
 \begin{align}
     \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}\cdot\mathbf{dA}
 \end{align}
-There are four edges to consider for this line integral, but by compressing it in much the same way as we did for the spherical cap in the last section, we send $dr\rightarrow0$, leaving us with the components parallel to the sphere. On the RHS, the area integral is compressed into a line. We can use the relationship between current density and surface current density ???
-
-% volume current becomes a surface current. We could see this as a delta function that fixes $\mathbf{j}$ to the surface: $\mathbf{j}(r,\theta,\phi)=\mathbf{K}(\theta,\phi)\delta(r-R)$. Since the area of the
-
-We treat all quantities as constant over the line's length so that the integrals disappear
+There are four edges to consider for this line integral, but by compressing it in much the same way as we did for the spherical cap in the last section, we send $dr\rightarrow0$, leaving us with the components parallel to the sphere. On the RHS, the area integral is compressed into a line. We can describe the volume current $\mathbf{j}$ as a sum of the volume currents elsewhere in space, $j_{vol}$, and the surface current at the radial position $r=R$, $\mathbf{K}(\theta,\phi)$.
+\begin{align}
+    \mathbf{j} &= \mathbf{j}_{vol} + \mathbf{K}(\theta,\phi)\delta(r-R) \\
+    \Longrightarrow \int \mathbf{j}\cdot\mathbf{dA} &= \int\mathbf{j}_{vol}\cdot\mathbf{dA} + \int\delta(r-R)\mathbf{K}\cdot\mathbf{dA}
+\end{align}
+As $dr\rightarrow0$, the first integral on the LHS vanishes, whereas the delta function saves the second. Therefore, the delta function disappears with the radial integral---$\mathbf{K}$ has no $r$-dependence. We are left with:
+\begin{align}
+    \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \int(\mathbf{\hat{n}}\times\mathbf{dl})\cdot\mathbf{K}
+\end{align}
+We have constructed the vector $\mathbf{\hat{n}}\times\mathbf{\Delta l}$ to lie perpendicular to the loop, which is tangential to the spherical surface. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
 \begin{align}
     \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{n}}\times\mathbf{\Delta l})\cdot\mathbf{K}
 \end{align}
-Where we have constructed the vector $\mathbf{\hat{n}}\times\mathbf{\Delta l}$ to lie perpendicular to the area of the loop, which is tangential to the spherical surface.
-
-
-% \begin{align}
-%     \int \mathbf{\hat{n}}\times \mathbf{B}_{out}(R) - \mathbf{\hat{n}}\times \mathbf{B}_{in}(R) &= \mu_0\int \mathbf{K}(R)
-% \end{align}
-
-% The orientation of the area is determined by the tangential component of $\mathbf{B}$, so it  (i.e., in the $\boldsymbol{\hat{\phi}}$- or $\boldsymbol{\hat{\theta}}$-direction, or a mix of both) is not important.
+Manipulating the RHS allows us to extract $\mathbf{\Delta l}$.
+\begin{align}
+    (\mathbf{\hat{n}}\times\mathbf{\Delta l})\cdot\mathbf{K} &= \mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{n}}) \label{cyclic}
+\end{align}
+Equation (\ref{cyclic}) now reads:
+\begin{align}
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{n}}) \label{BCtemp}
+\end{align}
+Let $\mathbf{X} = \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)$ and $\mathbf{Y} = \mathbf{K}\times\mathbf{\hat{n}}$. Then Equation (\ref{BCtemp}) now reads:
+\begin{align}
+    \mathbf{\Delta l}\cdot\mathbf{X} &= \mathbf{\Delta l}\cdot\mathbf{Y}
+\end{align}
+The loop vector $\mathbf{\Delta l}$ is variable. It can point in the $\boldsymbol{\hat{\theta}}$-direction, such that the $\theta$-components of the vectors are equal, or in the $\boldsymbol{\hat{\phi}}$-direction, so their $\phi$-components are equal. Since this holds for any direction on the surface of the sphere, we see that $\mathbf{X}=\mathbf{Y}$. Therefore, we have:
+\begin{align}
+    \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{n}}
+\end{align}
+Take the cross product with $\mathbf{\hat{n}}$ on the left:
+\begin{align}
+    \mathbf{\hat{n}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\hat{n}}\times(\mathbf{K}\times\mathbf{\hat{n}})
+\end{align}
+But on the RHS, taking another cross product with $\mathbf{\hat{n}}$ simply yields $\mathbf{K}$
+ again. Therefore, we have the second boundary condition:
+ \begin{align}
+     \boxed{\mathbf{\hat{n}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mu_0\mathbf{K}}
+ \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
