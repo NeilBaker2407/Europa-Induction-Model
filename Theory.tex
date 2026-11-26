@@ -89,11 +89,11 @@ Integrate Equation (\ref{DivB}) over the volume contained within a spherical cap
     0 &= \int dV \nabla\cdot\mathbf{B} \\
     &= \oint\mathbf{dA}\cdot\mathbf{B}
 \end{align}
-The integrand is now a sum of dot products between the six infinitesimal $\mathbf{dA}$ vectors normal to each face of the cap, and the magnetic field vectors outside of and within the sphere, $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$. The infinitesimal area for these components becomes $\mathbf{dA} = \pm R^2\sin(\theta)d\theta d\phi\mathbf{\hat{r}}$ when the cap is compressed. Similarly, $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ are both evaluated at $r=R$, giving us the relationship between them at the interface.
+The integrand is now a sum of dot products between the six infinitesimal $\mathbf{dA}$ vectors normal to each face of the cap, and the magnetic field vectors outside of and within the sphere, $\mathbf{B}_{in}$ and $\mathbf{B}_{out}$. However, we will compress this cap until it has zero thickness, i.e., we let $dr\rightarrow0$. This is to eliminate the area elements involving $dr$, while retaining the terms that isolate the normal components of $\mathbf{B}$, namely $\mathbf{\hat{r}}\cdot\mathbf{B}$, where $\mathbf{\hat{r}}$ is the spherical radial vector. The infinitesimal area for these components becomes $\mathbf{dA} = \pm R^2\sin(\theta)d\theta d\phi\mathbf{\hat{r}}$ when the cap is compressed. Similarly, $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ are both evaluated at $r=R$, giving us the relationship between them at the interface.
 \begin{align}
     \Longrightarrow \int_{\Delta\Omega} R^2d\Omega\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
-Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the three-dimensional volume has been compressed into a two-dimensional surface, the closed surface integral is replaced by the integral over an infinitesimal solid angle, $\Delta\Omega$. The normal component of $\mathbf{B}$ varies over the sphere, but over the surface of the infinitesimal cap it is constant. Therefore, the integral $\int_{\Delta\Omega} R^2d\Omega$ is trivially the area of the surface, denoted $\Delta A_{cap}$.
+Where we have suppressed the dependence of $\mathbf{B}$ on $\theta$ and $\phi$. Since the three-dimensional volume has been compressed into a two-dimensional surface, the closed surface integral is replaced by an area integral over an infinitesimal solid angle, $\Delta\Omega$. The normal component of $\mathbf{B}$ varies over the sphere, but over the surface of the infinitesimal cap it is constant. Therefore, the integral $\int_{\Delta\Omega} R^2d\Omega$ is trivially the area of the surface, denoted $\Delta A_{cap}$.
 \begin{align}
     \Delta A_{cap}\left[\mathbf{\hat{r}}\cdot\mathbf{B}_{out}(R) - \mathbf{\hat{r}}\cdot\mathbf{B}_{in}(R)\right] &= 0
 \end{align}
@@ -111,18 +111,18 @@ Next we will derive the tangential condition, which involves a similar argument.
 \end{align}
 By Stokes' theorem, the left hand side (LHS) is equivalent to the closed line integral around the edges of the area.
 \begin{align}
-    \int\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}\cdot\mathbf{dA}
+    \oint\mathbf{B}\cdot\mathbf{dl} &= \mu_0\int\mathbf{j}\cdot\mathbf{dA}
 \end{align}
-There are four edges to consider for this line integral, but by compressing it in much the same way as we did for the spherical cap in the last section, we send $dr\rightarrow0$, leaving us with the components parallel to the sphere. On the RHS, the area integral is compressed into a line. We can describe the volume current $\mathbf{j}$ as a sum of the volume currents elsewhere in space, $j_{vol}$, and the surface current at the radial position $r=R$, $\mathbf{K}(\theta,\phi)$.
+There are four edges to consider for this line integral, but by compressing it in much the same way as we did for the spherical cap in the last section, we send $dr\rightarrow0$, leaving us with the components parallel to the sphere. On the RHS, the area integral is compressed into a line. We can describe the volume current $\mathbf{j}$ as a sum of the volume currents elsewhere in space, $\mathbf{j}_{vol}$, and the surface current at the radial position $r=R$, $\mathbf{K}(\theta,\phi)$.
 \begin{align}
     \mathbf{j} &= \mathbf{j}_{vol} + \mathbf{K}(\theta,\phi)\delta(r-R) \\
     \Longrightarrow \int \mathbf{j}\cdot\mathbf{dA} &= \int\mathbf{j}_{vol}\cdot\mathbf{dA} + \int\delta(r-R)\mathbf{K}\cdot\mathbf{dA}
 \end{align}
-As $dr\rightarrow0$, the first integral vanishes, whereas the delta function saves the second. Since $\mathbf{K}$ has no $r$-dependence the radial integral is simply $\int\delta(r-R)dr=1$. We are left with:
+As $dr\rightarrow0$, the first integral vanishes, whereas the delta function saves the second. Since $\mathbf{K}$ has no $r$-dependence, the radial integral is simply $\int\delta(r-R)dr=1$. We are left with:
 \begin{align}
-    \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \int(\mathbf{\hat{r}}\times\mathbf{dl})\cdot\mathbf{K}
+    \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \mu_0\int(\mathbf{\hat{r}}\times\mathbf{dl})\cdot\mathbf{K}
 \end{align}
-We have constructed the vector $\mathbf{\hat{r}}\times\mathbf{dl}$ to lie tangential to the sphere, perpendicular to the loop. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
+We assume that the direction in which we trace the loop is such that $dl>0$ for $r>R$. We have constructed the vector $\mathbf{\hat{r}}\times\mathbf{dl}$ to lie tangential to the sphere, perpendicular to the loop. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
 \begin{align}
     \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{r}}\times\mathbf{\Delta l})\cdot\mathbf{K} \label{BCtemp1}
 \end{align}
@@ -134,23 +134,19 @@ Equation (\ref{BCtemp1}) now reads:
 \begin{align}
     \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}}) \label{BCtemp}
 \end{align}
-We would like to eliminate the $\mathbf{\Delta l}$ term from both sides. To do this, we must split $\mathbf{B}_{out}$ and $\mathbf{B}_{in}$ into radial and tangential components.
+We would like to eliminate the $\mathbf{\Delta l}$ term from both sides, since it should not show up in the final boundary condition. We can do this for the \textit{tangential component} of the magnetic field as follows.
 \begin{align}
-    \mathbf{\Delta l}\cdot[\mathbf{\hat{r}}B_{out,r}(R) - \mathbf{\hat{r}}B_{in,r}(R)] + \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}})
+    \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}}) \label{withdl}
 \end{align}
-Since there is no jump in the normal component of the magnetic field, the first term on the LHS is zero using  Equation (\ref{BCrad}). 
+The loop vector $\mathbf{\Delta l}$ is variable, so this expression holds for any direction tangential to the sphere's surface. If $\mathbf{\Delta l}=\boldsymbol{\hat{\theta}}$ then Equation (\ref{withdl}) shows that the $\theta$-components of $\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)$ and $\mathbf{K}\times\mathbf{\hat{r}}$ are equal. If $\mathbf{\Delta l}=\boldsymbol{\hat{\theta}}$, then Equation (\ref{withdl}) shows that their $\phi$-components are equal.
 \begin{align}
-    \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}})
+    \mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{r}} \label{tangentialbc}
 \end{align}
-Let $\mathbf{X} = \mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)$ and $\mathbf{Y} = \mathbf{K}\times\mathbf{\hat{r}}$. Note that both $\mathbf{X}$ and $\mathbf{Y}$ lie on the surface of the sphere. Then Equation (\ref{BCtemp}) now reads:
+This generalizes to the full magnetic field. We will take the cross product with $\mathbf{\hat{r}}$ on the left. Since the normal components will disappear with this cross product, we can include them without changing the expression. 
 \begin{align}
-    \mathbf{\Delta l}\cdot\mathbf{X} &= \mathbf{\Delta l}\cdot\mathbf{Y}
+    \mathbf{\hat{r}}\times [\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mathbf{\hat{r}}\times [\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)]
 \end{align}
-The loop vector $\mathbf{\Delta l}$ is variable. It can point in the $\boldsymbol{\hat{\theta}}$-direction, such that the $\theta$-components of the vectors are equal, or in the $\boldsymbol{\hat{\phi}}$-direction, so their $\phi$-components are equal. Since this holds for any direction on the surface of the sphere, we see that $\mathbf{X}=\mathbf{Y}$. Therefore, we have:
-\begin{align}
-    \mathbf{B}_{out}(R) - \mathbf{B}_{in}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{r}}
-\end{align}
-Take the cross product with $\mathbf{\hat{r}}$ on the left:
+Therefore, we have:
 \begin{align}
     \mathbf{\hat{r}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0\mathbf{\hat{r}}\times(\mathbf{K}\times\mathbf{\hat{r}})
 \end{align}
@@ -159,10 +155,38 @@ The RHS can be simplified.
     \mathbf{\hat{r}}\times(\mathbf{K}\times\mathbf{\hat{r}}) &= \mathbf{K}(\mathbf{\hat{r}}\cdot\mathbf{\hat{r}}) - \mathbf{\hat{r}}(\mathbf{K}\cdot\mathbf{\hat{r}}) \\
     &= \mathbf{K}
 \end{align}
-Therefore, we have the second boundary condition:
+This yields the second boundary condition:
  \begin{align}
      \boxed{\mathbf{\hat{r}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mu_0\mathbf{K}}
  \end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% SECTION %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Potential Equations}
+Our goal is to construct differential equations for the magnetic scalar and vector potentials.
+
+%%%%%%%%%%%%%%
+\subsection*{Non-Conducting Regions}
+In the non-conducting regions, there are no sources. Since $\nabla\times\mathbf{B} = 0$, $\mathbf{B}$ can be written as the gradient of a scalar potential, $\psi$.
+\begin{align}
+    \mathbf{B} &= -\nabla\psi
+\end{align}
+This is possible because the curl of a gradient is identically zero. Substituting into the divergence equation, we arrive at:
+\begin{align}
+    \nabla^2\psi = 0
+\end{align}
+So Laplace's equation is the one to solve in the inner volume ($r < R_1$) and in free space ($r>R_E$).
+
+\subsection{Conducting Regions}
+In the conducting regions, $\mathbf{j}\neq0$, so $\mathbf{B}$ is expressed as the curl of a vector potential, $\mathbf{A}$.
+\begin{align}
+    \mathbf{B} &= \nabla\times\mathbf{A}
+\end{align}
+This can always be done for $\mathbf{B}$ because the divergence of a curl is identically zero. Since the curl of a gradient is always zero, we may choose a gauge $\mathbf{A}'$ that satisfies:
+\begin{align}
+    \mathbf{A}' &= \mathbf{A} + \nabla\phi
+\end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
