@@ -37,7 +37,7 @@ Figure \ref{fig:shell_model} is a schematic of the model setup. We use a spheric
 \end{align}
 Where $\Theta$ is the Heaviside function. The ambient inducing Jovian magnetic field is the sum of a static field and an oscillating one, with variations in all three cartesian directions. We will omit the static part, which will only contribute to the total field in the final solution and simply define the time-variable component, which is the inducing field.
 \begin{align}
-    \mathbf{B}_J(t) = \mathbf{B}_{0}e^{-i\omega t}
+    \mathbf{B}_J(t) = \mathbf{B}_{0}e^{-i\omega t} \label{inducingfield}
 \end{align}
 At any instant, $\mathbf{B}_J$ is uniform in space. We may split the inducing field up into its three cartesian components, which oscillate at the same synodic frequency, though they may be out of phase. The linearity of Maxwell's equations and Ohm's law gives an induction response that is the superposition of three individual signals in the $\mathbf{\hat{x}}$, $\mathbf{\hat{y}}$ and $\mathbf{\hat{z}}$ directions. Furthermore, since $\sigma(r)$ is spherically symmetric, the solution in one direction is a rotation of the solutions in the other two. We choose the $\mathbf{\hat{z}}$ direction to serve as the representative direction, where $z=r\cos(\theta)$ and $\mathbf{\hat{z}} = \cos(\theta)\mathbf{\hat{r}} - \sin(\theta)\boldsymbol{\hat{\theta}}$. In this way, the system has azimuthal symmetry.
 \begin{align}
@@ -183,28 +183,39 @@ In the conducting regions, $\mathbf{j}\neq0$, so $\mathbf{B}$ is expressed as th
 \begin{align}
     \mathbf{B} &= \nabla\times\mathbf{A}
 \end{align}
-This can always be done for $\mathbf{B}$ because the divergence of a curl is identically zero. Since the curl of a gradient is always zero, we may substitute $\mathbf{A}$ for a related field $\mathbf{A}'$ that satisfies:
+This can always be done for $\mathbf{B}$ because the divergence of a curl is identically zero. Since the curl of a gradient is always zero, we may substitute $\mathbf{A}$ for a field $\mathbf{A}'$ that satisfies:
 \begin{align}
     \mathbf{A}' &= \mathbf{A} + \nabla\phi \label{gauge}
 \end{align}
-Since $\mathbf{A}$ and $\mathbf{A}'$ are not unique, we are free to select a constraint on $\mathbf{A}'$. The Coulomb gauge, $\nabla\cdot\mathbf{A}'=0$, is often used for systems in which the displacement current is neglected. This results in a relationship between the remaining terms in Equation (\ref{gauge}).
+Since $\mathbf{A}$ and $\mathbf{A}'$ are not unique, we may choose a constraint on $\mathbf{A}'$, called a gauge. The Coulomb gauge, $\nabla\cdot\mathbf{A}'=0$, is often used for systems in which the displacement current is neglected. This choice results in a relationship between the remaining terms in Equation (\ref{gauge}).
 \begin{align}
     \nabla\cdot\mathbf{A}' &= \nabla\cdot\mathbf{A} + \nabla^2\phi \\
     \Longrightarrow \nabla\cdot\mathbf{A} &= -\nabla^2\phi
 \end{align}
 Substitute $\mathbf{A}'$ into Ampere's law:
 \begin{align}
-    \nabla\times(\nabla\times\mathbf{A}) &= \mu_0\mathbf{j}
+    \nabla\times(\nabla\times\mathbf{A}') &= \mu_0\mathbf{j}
 \end{align}
 The double curl can be split into two components using vector relations or index notation.
 \begin{align}
     \mu_0\mathbf{j} &= \nabla(\nabla\cdot\mathbf{A}') - \nabla^2\mathbf{A}' \\
     &= - \nabla^2\mathbf{A}'
 \end{align}
-This yields three Poisson's equations to solve for the resistive layers: one for each dimension.
+Applying Ohm's law results in a relationship between $\mathbf{E}$ and $\mathbf{A}'$ Taking the curl and applying Faraday's law brings us back to an equation for $\mathbf{A}'$.
 \begin{align}
-    \nabla^2A_i = -\mu_0 j_i
+    \nabla\times(\nabla^2\mathbf{A}') &= \mu_0\sigma\frac{\partial}{\partial t}(\nabla\times\mathbf{A}') \\
+    &= \mu_0\sigma\nabla\times\left(\frac{\partial\mathbf{A}'}{\partial t}\right) \label{timeder}
 \end{align}
+Within each conducting layer, $\sigma$ is constant, so the derivatives pass through it. Since the system changes with frequency in response to the driving $\omega$ (Equation \ref{inducingfield}), in this scenario, $\partial_t X = -i\omega X$, where $X$ is any scalar quantity (including components of a vector field). Therefore, we may simplify Equation (\ref{timeder}).
+\begin{align}
+    \nabla\times(\nabla^2\mathbf{A}') &= -i\mu_0\sigma\omega\nabla\times\mathbf{A}'
+\end{align}
+This is the equation to solve inside the conducting shells.
+
+% This yields three Poisson's equations to solve for the resistive layers: one for each dimension.
+% \begin{align}
+%     \nabla^2A_i = -\mu_0 j_i
+% \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%% SECTION %%%%%%%%%%
@@ -214,13 +225,13 @@ This yields three Poisson's equations to solve for the resistive layers: one for
 The Jovian field has a period of around 11 hours. We denote the synodic rotation frequency $\omega$. On these time scales, $|\epsilon_0\mu_0\partial_t\mathbf{E}|$ is small  compared to (1) $|\mu_0\mathbf{j}|$ in conducting regions, and (2) $|\nabla\times\mathbf{B}|$ in non-conducting regions. For the former:
 
 \begin{align}
-    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\mu_0\mathbf{j}\right|} &\approx \frac{\omega\epsilon_0}{\sigma}
+    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\mu_0\mathbf{j}\right|} &\approx \frac{\omega\epsilon_0}{\sigma} \label{condtermrat}
 \end{align}
-For the ocean ???, this expression has a numerical value of about ???. For the ice, it has a value of about ???. For the latter:
+For the saltwater ocean, $\sigma$ is estimated to be around ???. Therefore, Equation (\ref{condtermrat}) has a numerical value of about ???, which is small enough to neglect the displacement current. For the latter:
 \begin{align}
-    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\nabla\times\mathbf{B}\right|} &\approx \frac{\omega R_EE}{c^2B}
+    \frac{\left|\epsilon_0\mu_0\partial_t\mathbf{E}\right|}{\left|\nabla\times\mathbf{B}\right|} &\approx \frac{\omega R_EE}{c^2B} \label{noncondtermrat}
 \end{align}
-???
+ For the ice, $\sigma$ has a value of about ???. Therefore, Equation 9\ref{noncondtermrat}) has a numerical value of about ???, which is also small enough to neglect the displacement current.
 
 
 
