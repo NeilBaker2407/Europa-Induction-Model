@@ -122,7 +122,7 @@ As $dr\rightarrow0$, the first integral vanishes, whereas the delta function sav
 \begin{align}
     \int(\mathbf{B}_{out}-\mathbf{B}_{in})\cdot\mathbf{dl} &= \mu_0\int(\mathbf{\hat{r}}\times\mathbf{dl})\cdot\mathbf{K}
 \end{align}
-We assume that the direction in which we trace the loop is such that $dl>0$ for $r>R$. We have constructed the vector $\mathbf{\hat{r}}\times\mathbf{dl}$ to lie tangential to the sphere, perpendicular to the loop. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
+We assume that for $r>R$ the loop is traversed along $+\mathbf{\Delta l}$, whereas for $r<R$ it is traversed along $-\mathbf{\Delta l}$. We have constructed the vector $\mathbf{\hat{r}}\times\mathbf{dl}$ to lie tangential to the sphere, perpendicular to the loop. We treat all quantities as constant over the length of the line so that the infinitesimal integrates to the line vector, denoted $\mathbf{\Delta l}$.
 \begin{align}
     \mathbf{\Delta l}\cdot[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] &= \mu_0 (\mathbf{\hat{r}}\times\mathbf{\Delta l})\cdot\mathbf{K} \label{BCtemp1}
 \end{align}
@@ -138,7 +138,7 @@ We would like to eliminate the $\mathbf{\Delta l}$ term from both sides, since i
 \begin{align}
     \mathbf{\Delta l}\cdot[\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)] &= \mu_0\mathbf{\Delta l}\cdot(\mathbf{K}\times\mathbf{\hat{r}}) \label{withdl}
 \end{align}
-The loop vector $\mathbf{\Delta l}$ is variable, so this expression holds for any direction tangential to the sphere's surface. If $\mathbf{\Delta l}=\boldsymbol{\hat{\theta}}$ then Equation (\ref{withdl}) shows that the $\theta$-components of $\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)$ and $\mathbf{K}\times\mathbf{\hat{r}}$ are equal. If $\mathbf{\Delta l}=\boldsymbol{\hat{\theta}}$, then Equation (\ref{withdl}) shows that their $\phi$-components are equal.
+We may drop the radial components (temporarily) because $\mathbf{\Delta l}$ is tangential, so its dot product with them is zero. Since $\mathbf{\Delta l}$ is a variable, so this expression holds for any direction tangential to the sphere's surface. If $\mathbf{\Delta l}\parallel\boldsymbol{\hat{\theta}}$ then Equation (\ref{withdl}) shows that the $\theta$-components of $\mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R)$ and $\mathbf{K}\times\mathbf{\hat{r}}$ are equal. If $\mathbf{\Delta l}\parallel\boldsymbol{\hat{\phi}}$, then Equation (\ref{withdl}) shows that their $\phi$-components are equal.
 \begin{align}
     \mathbf{B}_{out,t}(R) - \mathbf{B}_{in,t}(R) &= \mu_0\mathbf{K}\times\mathbf{\hat{r}} \label{tangentialbc}
 \end{align}
@@ -155,7 +155,7 @@ The RHS can be simplified.
     \mathbf{\hat{r}}\times(\mathbf{K}\times\mathbf{\hat{r}}) &= \mathbf{K}(\mathbf{\hat{r}}\cdot\mathbf{\hat{r}}) - \mathbf{\hat{r}}(\mathbf{K}\cdot\mathbf{\hat{r}}) \\
     &= \mathbf{K}
 \end{align}
-This yields the second boundary condition:
+$\mathbf{K}\cdot\mathbf{\hat{r}}=0$ Since $\mathbf{K}$ is tangential. This yields the second boundary condition:
  \begin{align}
      \boxed{\mathbf{\hat{r}}\times[\mathbf{B}_{out}(R) - \mathbf{B}_{in}(R)] = \mu_0\mathbf{K}}
  \end{align}
@@ -183,9 +183,27 @@ In the conducting regions, $\mathbf{j}\neq0$, so $\mathbf{B}$ is expressed as th
 \begin{align}
     \mathbf{B} &= \nabla\times\mathbf{A}
 \end{align}
-This can always be done for $\mathbf{B}$ because the divergence of a curl is identically zero. Since the curl of a gradient is always zero, we may choose a gauge $\mathbf{A}'$ that satisfies:
+This can always be done for $\mathbf{B}$ because the divergence of a curl is identically zero. Since the curl of a gradient is always zero, we may substitute $\mathbf{A}$ for a related field $\mathbf{A}'$ that satisfies:
 \begin{align}
-    \mathbf{A}' &= \mathbf{A} + \nabla\phi
+    \mathbf{A}' &= \mathbf{A} + \nabla\phi \label{gauge}
+\end{align}
+Since $\mathbf{A}$ and $\mathbf{A}'$ are not unique, we are free to select a constraint on $\mathbf{A}'$. The Coulomb gauge, $\nabla\cdot\mathbf{A}'=0$, is often used for systems in which the displacement current is neglected. This results in a relationship between the remaining terms in Equation (\ref{gauge}).
+\begin{align}
+    \nabla\cdot\mathbf{A}' &= \nabla\cdot\mathbf{A} + \nabla^2\phi \\
+    \Longrightarrow \nabla\cdot\mathbf{A} &= -\nabla^2\phi
+\end{align}
+Substitute $\mathbf{A}'$ into Ampere's law:
+\begin{align}
+    \nabla\times(\nabla\times\mathbf{A}) &= \mu_0\mathbf{j}
+\end{align}
+The double curl can be split into two components using vector relations or index notation.
+\begin{align}
+    \mu_0\mathbf{j} &= \nabla(\nabla\cdot\mathbf{A}') - \nabla^2\mathbf{A}' \\
+    &= - \nabla^2\mathbf{A}'
+\end{align}
+This yields three Poisson's equations to solve for the resistive layers: one for each dimension.
+\begin{align}
+    \nabla^2A_i = -\mu_0 j_i
 \end{align}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
